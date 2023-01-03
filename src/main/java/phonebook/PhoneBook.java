@@ -2,12 +2,46 @@ package phonebook;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class PhoneBook {
     private List<Contact> contactList;
 
     public PhoneBook(List<Contact> contactList) {
         this.contactList = contactList;
+    }
+
+    public boolean isEmpty(Contact contact) {
+        return contact.getPhone() == null;
+    }
+
+    public boolean isValid(Contact contact) {
+        String regex = "^[0-9]{10}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(contact.getPhone());
+        boolean isFound = matcher.find();
+        if (isFound) {
+            System.out.println("Number is valid");
+            return true;
+        } else {
+            System.out.println("Number is invalid");
+            return false;
+        }
+    }
+
+    public boolean isVodafone(Contact contact) {
+        String regex = "^[0][9][5]{1}[0-9]{7}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(contact.getPhone());
+        boolean isFound = matcher.find();
+        if (isFound) {
+            System.out.println("Number is Vodafone");
+            return true;
+        } else {
+            System.out.println("Number is not Vodafone");
+            return false;
+        }
     }
 
     public void add(Contact contact) {

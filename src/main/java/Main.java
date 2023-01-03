@@ -8,17 +8,23 @@ public class Main {
     public static void main(String[] args) {
          PhoneBook phoneBook = new PhoneBook(new ArrayList<Contact>() {
             {
-                add(new Contact("Volodymyr Vashkolup", "050 422 18 21"));
-                add(new Contact("Volodymyr Vashkolup", "050 422 20 21"));
-                add(new Contact("Alice Wonderland", "050 975 20 21"));
+                add(new Contact("Volodymyr Vashkolup", "0504221821"));
+                add(new Contact("Volodymyr Vashkolup", "0504222021"));
+                add(new Contact("Alice Wonderland", "0509752021"));
             }
         });
 
-        phoneBook.add(new Contact("Petro Poroshenko","094 22x xx xx"));
+        phoneBook.add(new Contact("Petro Poroshenko","09422xxxxx"));
         phoneBook.add(new Contact("Darth Vader","xyt-12-zx-kk"));
 
         phoneBook.find("Alice Wonderland");
         phoneBook.findAll("Volodymyr Vashkolup");
+
+        phoneBook.isEmpty(new Contact("Volodymyr",null));
+        phoneBook.isValid(new Contact("Volodymyr Vashkolup", "0504221821"));
+        phoneBook.isValid(new Contact("Darth Vader","xyt-12-zx-kk"));
+        phoneBook.isVodafone(new Contact("Volodymyr","0953047654"));
+
 //        Collections.countOccurance(new ArrayList<>() {
 //            {
 //                add("string");
